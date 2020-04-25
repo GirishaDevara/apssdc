@@ -38,13 +38,34 @@ def details(request):
 
 
 def login(request):
-	static_name = 'user1'
-	static_password = 'pswd'
-	if request.method == 'POST':
-		name = request.POST['username']
-		password = request.POST['password']
-		if static_name == name and static_password == static_password:
-			return HttpResponse("logged in successfully")
-		else:
-			return HttpResponse("invalid credentials")
-	return render(request, 'firstApp/login.html', {})
+    static_name = 'user1'
+    static_password = 'pswd'
+    if request.method == 'POST':
+        name = request.POST['username']
+        password = request.POST['password']
+        if static_name == name and static_password == static_password:
+            return HttpResponse("logged in successfully")
+        else:
+            return HttpResponse("invalid credentials")
+    return render(request, 'firstApp/login.html', {})
+
+
+def score(request):
+    if request.method == 'POST':
+        team1 = request.POST.get('team1')
+        team2 = request.POST.get('team2')
+        if team1 is not None:
+            val1 = int(request.POST.get('t1val')) + 1
+            val2 = int(request.POST.get('t2val'))
+            scores = {'t1val': val1, 't2val': val2}
+            return render(request, 'firstApp/scoreboard.html',  scores)
+        elif team2 is not None:
+            val2 = int(request.POST.get('t2val')) + 1
+            val1 = int(request.POST.get('t1val'))
+            scores = {'t1val': val1, 't2val': val2}
+            return render(request, 'firstApp/scoreboard.html', scores)
+    else:
+        return render(request, 'firstApp/scoreboard.html')
+
+def home(request):
+    return render(request,'firstApp/home.html')
