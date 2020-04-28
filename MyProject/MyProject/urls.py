@@ -14,4 +14,5 @@ urlpatterns = [
     path("login/", views.login, name="login"),
     path("score", views.score, name='score'),
     path('home', views.home,name = 'home'),
+    path('restaurant',views.restaurant,name="restaurant"),
 ]

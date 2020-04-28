@@ -58,7 +58,7 @@ def score(request):
             val1 = int(request.POST.get('t1val')) + 1
             val2 = int(request.POST.get('t2val'))
             scores = {'t1val': val1, 't2val': val2}
-            return render(request, 'firstApp/scoreboard.html',  scores)
+            return render(request, 'firstApp/scoreboard.html', scores)
         elif team2 is not None:
             val2 = int(request.POST.get('t2val')) + 1
             val1 = int(request.POST.get('t1val'))
@@ -67,5 +67,20 @@ def score(request):
     else:
         return render(request, 'firstApp/scoreboard.html')
 
+
 def home(request):
-    return render(request,'firstApp/home.html')
+    return render(request, 'firstApp/home.html')
+
+
+def restaurant(request):
+    if request.method == 'POST':
+        biryani = request.POST['biryani']
+        butternaans = request.POST['butternaans']
+
+        biryani_cost = 220 * int(biryani)
+        butternaans_cost = 10 * int(butternaans)
+        total = biryani_cost + butternaans_cost
+        menu = {'biryani': biryani, 'butternaans': butternaans, 'biryani_cost': biryani_cost,
+                'butternaans_cost': butternaans_cost, 'total': total}
+        return render(request, 'firstApp/restaurantapplication.html', {'menu': menu})
+    return render(request, 'firstApp/restaurantapp.html')
