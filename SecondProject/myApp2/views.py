@@ -18,6 +18,6 @@ def register(request):
 
 
 def display(request):
-    data = Student()
+    data = Student.objects.all()
     # import pdb; pdb.set_trace()
     return render(request,'myApp2/displayStudent.html',{'data':data})

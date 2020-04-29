@@ -4,13 +4,27 @@
 	<title>Students Data</title>
 </head>
 <body>
-<div class="card">
-    {{data.stuid}}
-    {{data.stuName}}
-    {{data.age}}
-    {{data.branch}}
-    {{data.language}}
-    {{data}}
+<div >
+    <table border="1">
+		<thead >
+			<th>Student Name</th>
+			<th>Student Id</th>
+            <th>Branch</th>
+            <th>Age</th>
+            <th>Known language</th>
+		</thead>
+		<tbody>
+			{% for info in data %}
+				<tr>
+					<td>{{info.stuName}}</td>
+					<td>{{info.stuid}}</td>
+                    <td>{{info.branch}}</td>
+                    <td>{{info.age}}</td>
+                    <td>{{info.language}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </div>
 </body>
 </html>
