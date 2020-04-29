@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register page</title>
+</head>
+<body>
+<div class="card">
+	<form method="POST">
+		{% csrf_token %}
+        {{form.as_p}}
+
+        <input type="submit" name="submit" value="Submit">
+	</form>
+</div>
+</body>
+</html>
