@@ -23,5 +23,5 @@ urlpatterns = [
     path('signup/',v1.signUp,name="signup"),
     path('showAll/',v1.showAll,name="showAll"),
     path('myapp2/',include('myApp2.urls')),
-    path('girisha/',include('girisha.urls')),
+    path('',include('girisha.urls')),
 ]

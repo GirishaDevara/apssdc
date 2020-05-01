@@ -7,4 +7,4 @@ class UserRegisterForm(forms.ModelForm):
         model = UserRegister
         # fields = "__all__"
         fields = ['first_name','last_name',
-                  'user_name','mail_id','phone_number' ]
+                  'user_name','mail_id','phone_number','age']

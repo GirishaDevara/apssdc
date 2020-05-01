@@ -7,27 +7,22 @@
 	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
-<div class="container">
-	<div class="card">
-		<div class="card-header bg-primary">Registration Page</div>
-		<div class="card-body">
-			<form method="POST">
-				{% csrf_token %}
-				<table>
-					<tr><td>student name: </td><td>{{form.first_name}}</td></tr>
-					<tr><td>student Id: </td><td>{{form.last_name}}</td></tr>
-					<tr><td>Branch: </td><td>{{form.user_name}}</td></tr>
-					<tr><td>student age: </td><td>{{form.mail_id}}</td></tr>
-					<tr><td>student Language: </td><td>{{form.phone_number}}</td></tr>
-                    <tr><td>student Language: </td><td>{{form.age}}</td></tr>
-				</table>
-				<div class="card-footer">
-					<input class="btn btn-primary" type="submit" name="submit" value="Submit">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="card">
+			<div class="card-header bg-info">Registration Page</div>
+			<div class="card-body">
+				<form method="POST">
+					{% csrf_token %}
+					<table>
+						{{ form.as_table }}
+					</table>
+					<div class="card-footer">
+					<input class="btn btn-info" type="submit" name="submit" value="Submit">
 				</form>
-				</div>
+			</div>
 		</div>
-
-</div>
-</div>
+		</div>
+	</div>
 </body>
 </html>

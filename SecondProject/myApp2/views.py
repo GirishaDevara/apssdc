@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from .forms import StudentForm
 from .models import Student
+from django.contrib import messages
 
 
 def hello(request):
@@ -11,12 +12,15 @@ def hello(request):
 def register(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
-        print('hi')
         if form.is_valid():
             form.save()
-            return redirect('/myapp2/display')
+            # messages.success(request,'done')
+            messages.success(request,request.POST['stuName']+'details added successfully')
+            messages.info(request, 'Now you can add record')
+            return redirect(reverse('register'))
         else:
-            return HttpResponse("invalid data")
+            messages.warning(request,'invalid details please enter again!!')
+            return redirect(reverse('register'))
     form = StudentForm()
     return render(request,'myApp2/register.html',{'form':form})
 

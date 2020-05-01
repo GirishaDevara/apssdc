@@ -8,10 +8,15 @@
 </head>
 <body>
 <div class="container">
+	{% if messages %}
+			{% for msg in messages %}
+			<div class="alert alert-{{ msg.tags }}">{{ msg }}</div>
+			{% endfor %}
+		{% endif %}
+		<form action="{% url 'register' %}" method="POST">
 	<div class="card">
 		<div class="card-header bg-primary">Registration Page</div>
 		<div class="card-body">
-			<form method="POST">
 				{% csrf_token %}
 				<table>
 					<tr><td>student name: </td><td>{{form.stuName}}</td></tr>
