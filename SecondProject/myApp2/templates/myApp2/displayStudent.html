@@ -2,29 +2,45 @@
 <html>
 <head>
 	<title>Students Data</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% load static %}
+	<title>Register page</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
-<div >
-    <table border="1">
-		<thead >
-			<th>Student Name</th>
-			<th>Student Id</th>
-            <th>Branch</th>
-            <th>Age</th>
-            <th>Known language</th>
-		</thead>
-		<tbody>
-			{% for info in data %}
-				<tr>
-					<td>{{info.stuName}}</td>
-					<td>{{info.stuid}}</td>
-                    <td>{{info.branch}}</td>
-                    <td>{{info.age}}</td>
-                    <td>{{info.language}}</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+<div class="container">
+	<div class="row	justify-content-center">
+		<div class="card">
+			<div class="card-body">
+				<table class="table table-striped table-responsive">
+					<thead >
+						<th>Id</th>
+						<th>Student Name</th>
+						<th>Student Id</th>
+						<th>Branch</th>
+						<th>Age</th>
+						<th>Known language</th>
+					<th>Delete</th>
+					</thead>
+					<tbody>
+						{% for info in data %}
+							<tr>
+								<td>{{info.id}}</td>
+								<td><a href="{% url 'edit' info.id %}">{{info.stuName}}</a></td>
+								<td>{{info.stuid}}</td>
+								<td>{{info.branch}}</td>
+								<td>{{info.age}}</td>
+								<td>{{info.language}}</td>
+								<td><a class="btn btn-info" href="{% url 'delete' info.id %}">Delete</a></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

@@ -35,3 +35,10 @@ def edit(request,id):
             return redirect(reverse('display'))
     form = StudentForm(instance=data)
     return render(request,'myApp2/edit.html',{'form':form,'data':data})
+
+def delete(request,id):
+    ob = Student.objects.get(id=id)
+    if request.method == 'POST':
+        ob.delete()
+        return redirect(reverse(display))
+    return render(request,'myapp2/msg.html',{'info':ob})
