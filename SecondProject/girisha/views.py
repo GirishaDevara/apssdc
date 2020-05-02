@@ -22,7 +22,7 @@ def register(request):
                                  user_name=user_name, mail_id=mail_id, phone_number=phone_number, age=age)
             model.save()
             # messages.success(request,'User Details added Successfully')
-            return HttpResponse("your password is : "+'/"'+password+'/"')
+            return HttpResponse("your password is : "+'"'+password+'"')
         else:
             messages.warning(request,'please enter valid details!!')
             return render(request,'register.html',{'form':form})
