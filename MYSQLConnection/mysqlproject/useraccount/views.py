@@ -16,7 +16,7 @@ def upload(request):
             model = Userregister(fullname=name,mailid=mailid,image=request.FILES['image'],password=password)
             model.save()
             sub = 'Hi this is gireesha'
-            body = 'Welcome to my url, this is your user id'+'mailid'+'and password is: '+password
+            body = 'Welcome to my app,\n this is your user id '+mailid+' and \n password is: '+password
             receiver = request.POST['mailid']
             sender = settings.EMAIL_HOST_USER
             send_mail(sub,body,sender,[receiver])
