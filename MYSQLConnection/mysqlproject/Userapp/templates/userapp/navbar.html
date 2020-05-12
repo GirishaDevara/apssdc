@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="{% url 'home' %}">
+    {% load static %}
+    <img src="{% static 'images/download.png' %}" alt="logo" style="width:40px;">
+  </a>
+  <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+  <!-- Links -->
+    <ul class="navbar-nav">
+      {% if user.is_authenticated  %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">SignOut</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup' %}">SignUp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">SignIn</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+  <div class="navbar-collapse collapse w-150 order-3 dual-collapse2">
+    hi
+    {% if user.is_authenticated  %}
+    {{ requst.user }}
+    {% endif %}
+    <p></p>
+    </div>
+</nav>
+

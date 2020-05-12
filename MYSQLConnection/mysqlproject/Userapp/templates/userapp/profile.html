@@ -1,0 +1,6 @@
+{% extends 'userapp/header.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+	<h2>{{request.user}}</h2>
+	<h2>{{request.password}}</h2>	
+{% endblock content %}

@@ -1,0 +1,8 @@
+{% extends 'userapp/header.html' %}
+{% block title %}Home Page{% endblock title %}
+{% block content %}
+
+<div class="alert alert-success">
+	<h3>Hi, Welcome <spam>{{request.user}}</spam></h3>
+</div>
+{% endblock content %}

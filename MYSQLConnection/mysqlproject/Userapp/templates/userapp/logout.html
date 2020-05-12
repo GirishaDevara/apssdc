@@ -1,0 +1,10 @@
+{% extends 'userapp/header.html' %}
+{% block title %}SignUp{% endblock title %}
+{% block blocktitle %}SignOut{% endblock blocktitle%}
+{% block content %}
+<dv class="alert alert-info">
+
+</dv>
+	<h3>User Logged out</h3>
+	<a href="{% url 'login' %}">Click here to login again</a>
+{% endblock content %}

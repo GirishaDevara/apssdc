@@ -1,0 +1,15 @@
+{% extends 'userapp/header.html' %}
+{% block title %}SignUp{% endblock title %}
+{% block content %}
+<div class="card">
+	    <div class="card-header bg-info">SignUp</div>
+        <div class="card-body">
+		<form method="POST" action="{% url 'signup' %}">
+			{% csrf_token %}
+			{{form.as_p}}
+			<!--{{form.first_name.label}}!-->
+		<button type="submit">Submit</button>
+		</form>
+		</div>
+</div>
+{% endblock content %}
