@@ -6,5 +6,5 @@ from user import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', views.login, name='login'),
-    path('reset/',views.reset, name='reset')
+    path('resetpswd/',views.reset, name='reset'),
 ]
