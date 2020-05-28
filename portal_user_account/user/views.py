@@ -12,8 +12,9 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('login')
         password = request.POST.get('password')
-        # user = authenticate(request, username=username, password=password)
-        if request.user.is_authenticated:
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None:
             messages.success(request, 'Log in successful')
             return render(request, 'welcome.html')
         elif not User.objects.filter(username=username):
@@ -42,6 +43,8 @@ def reset(request):
         new = request.POST.get('password1')
         confirm = request.POST.get('password1')
         if new == confirm:
-            User.objects.get(id=old_password.split('-')[-1]).set_password(new)
+            user = User.objects.get(id=old_password.split('-')[-1])
+            user.set_password(new)
+            user.save()
             return redirect('login')
     return render(request, 'ResetPassword.html')
